@@ -3,7 +3,6 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 class Register extends Component {
-  // --- in general register will have more info like address , phone and so on
   state = { email: "", password: "", redirectToHome: false, isError: false };
 
   register = () => {
@@ -22,7 +21,7 @@ class Register extends Component {
           });
         } else {
           this.setState({ isError: true });
-          console.log(`register status code : ${res.status}`);
+          console.log(`error code : ${res.status}`);
         }
       })
       .catch(err => {
@@ -32,8 +31,6 @@ class Register extends Component {
   };
 
   render() {
-    // --- todo add stronger validation
-    // --- e.g. password should have 6 chars and so on
     const disabled = !this.state.email || !this.state.password;
 
     if (this.state.redirectToHome) {
@@ -45,18 +42,22 @@ class Register extends Component {
         <h1>Register</h1>
         Email
         <input
-          type="text"
           onChange={evt => this.setState({ email: evt.target.value })}
+          type="email"
         />
         <br />
         Password
         <input
-          type="password"
           onChange={evt => this.setState({ password: evt.target.value })}
+          type="password"
         />
         <br />
-        {this.state.isError ? <p style={{ color: "red" }}>Register error</p> : ""}
-        <button onClick={this.register} disabled={disabled}>
+        {this.state.isError ? (
+          <p style={{ color: "red" }}>Register error</p>
+        ) : (
+          ""
+        )}
+        <button disabled={disabled} onClick={this.register}>
           Register
         </button>
       </div>
