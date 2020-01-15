@@ -27,3 +27,15 @@
 <li>no token expire time</li>
 </ul>
 
+
+<h2>Usage</h2>
+<ul>
+<li>cd to client directory -> num install</li>
+<li>cd to server directory -> num install</li>
+<li>from server directory -> npm run dev (will launch react and express)</li>
+</ul>
+
+
+<h2>Test rest api</h2>
+you can use the file server\rest-client-test\test_rest_api.rest but you need vs code plugin. 
+check <a href='https://www.youtube.com/watch?v=NnksoMaMMOU&t=310s'>this short video</a>  

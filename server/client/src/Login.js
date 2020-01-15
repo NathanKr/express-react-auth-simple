@@ -39,14 +39,14 @@ class Login extends Component {
         <h1>Login</h1>
         Email
         <input
-          defaultValue="1@gmail.com"
+          // defaultValue="1@gmail.com"
           type="text"
           onChange={evt => this.setState({ email: evt.target.value })}
         />
         <br />
         Password
         <input
-          defaultValue="123"
+          // defaultValue="123"
           type="password"
           onChange={evt => this.setState({ password: evt.target.value })}
         />
