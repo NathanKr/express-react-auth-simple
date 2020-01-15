@@ -1,5 +1,14 @@
-<h2>This is simple email\password authentication solution using react + react router + express + mongodb</h2>
-
+<h2>Introduction</h2>
+<p>This is simple email\password authentication solution. the following is used : </p>
+<ul>
+<li>react</li>
+<li>react router</li>
+<li>express</li>
+<li>mongodb</li>
+<li>mongodb driver</li>
+<li>rest api</li>
+</ul>
+ 
 <h2>limitations</h2>
 <h3>server</h3>
 <ul>
