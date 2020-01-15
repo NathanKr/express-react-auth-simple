@@ -1,1 +1,20 @@
-# express-react-auth-simple
+<h2>This is simple email\password authentication solution using react + react router + express + mongodb</h2>
+
+<h2>limitations</h2>
+<h3>server</h3>
+<ul>
+<li>clear text</li>
+<li>the api is not secured on the server side</li>
+</ul>
+
+<h3>client</h3>
+<ul>
+<li>no local storage</li>
+</ul>
+
+<h3>client\server</h3>
+<ul>
+<li>no jwt</li>
+<li>no token expire time</li>
+</ul>
+

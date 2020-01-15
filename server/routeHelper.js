@@ -24,6 +24,8 @@ function login(req, res) {
 
       if (user) {
         // --- this is post but nothing is created so return 200
+        // --- user should be stored by the client to access info like
+        // --- address , phone , ...
         return res.status(200).send(user);
       }
 
@@ -63,12 +65,13 @@ function register(req, res) {
         // -- no email ---> insert
         dbo
           .collection(collectionName)
-          .insertOne(queryUser, function(err, newUser) {
+          .insertOne(queryUser, function(err, result) {
             if (err) {
               console.log(err);
               return res.sendStatus(500);
             }
 
+            // --- result has _id but i see no reason of sending it to the client
             return res.sendStatus(201);
           });
       });

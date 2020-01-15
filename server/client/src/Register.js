@@ -2,23 +2,27 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-class Login extends Component {
+class Register extends Component {
+  // --- in general register will have more info like address , phone and so on
   state = { email: "", password: "", redirectToHome: false, isError: false };
 
-  login = () => {
+  register = () => {
     this.setState({ isError: false });
     axios
-      .post("/users/login", {
+      .post("/users/register", {
         email: this.state.email,
         password: this.state.password
       })
       .then(res => {
-        if (res.status === 200) {
+        if (res.status === 201) {
           this.setState({ redirectToHome: true });
-          this.props.setUser(res.data);
+          this.props.setUser({
+            email: this.state.email,
+            password: this.state.password
+          });
         } else {
           this.setState({ isError: true });
-          console.log(`login status code : ${res.status}`);
+          console.log(`register status code : ${res.status}`);
         }
       })
       .catch(err => {
@@ -28,6 +32,8 @@ class Login extends Component {
   };
 
   render() {
+    // --- todo add stronger validation
+    // --- e.g. password should have 6 chars and so on
     const disabled = !this.state.email || !this.state.password;
 
     if (this.state.redirectToHome) {
@@ -36,28 +42,26 @@ class Login extends Component {
 
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Register</h1>
         Email
         <input
-          defaultValue="1@gmail.com"
           type="text"
           onChange={evt => this.setState({ email: evt.target.value })}
         />
         <br />
         Password
         <input
-          defaultValue="123"
           type="password"
           onChange={evt => this.setState({ password: evt.target.value })}
         />
         <br />
-        {this.state.isError ? <p style={{ color: "red" }}>Login error</p> : ""}
-        <button onClick={this.login} disabled={disabled}>
-          Login
+        {this.state.isError ? <p style={{ color: "red" }}>Register error</p> : ""}
+        <button onClick={this.register} disabled={disabled}>
+          Register
         </button>
       </div>
     );
   }
 }
 
-export default Login;
+export default Register;
